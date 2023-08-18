@@ -19,5 +19,5 @@ def main [owner: string, repo: string] {
       deletions: $it.2
     }
   }
-  | save weekly-commit-activity.csv
+  | save -f weekly-commit-activity.csv
 }
