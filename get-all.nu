@@ -1,5 +1,13 @@
 #!/usr/bin/env nu
 
 def main [owner: string, repo: string] {
-  ./get-community-profile-metrics.nu $owner $repo
+  let scripts = ls get-*.nu
+  | get name
+  | where $it != get-all.nu
+
+  $scripts | each {|script|
+    nu $script $owner $repo
+  }
+
+  return
 }
